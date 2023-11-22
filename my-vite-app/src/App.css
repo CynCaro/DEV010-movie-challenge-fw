@@ -1,0 +1,96 @@
+* {
+  font-family: 'Poppins', sans-serif;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+}
+
+header {
+  background: #171727;
+  width: 100%;
+  height: 100px;
+  margin: 0px;
+  display: flex;
+  align-items: center; /* Centra verticalmente los elementos hijos */
+}
+
+.logo-image {
+  float: left;
+  margin: 40px;
+  width: 20%;
+}
+
+.movie-search {
+  display: flex;
+  align-items: center;
+  margin-left: 54%;
+}
+
+.movie-search input {
+  margin-right: 10px;
+  padding: 10px;
+  border-radius: 30px;
+  border: none;
+}
+
+.search-container {
+  display: flex;
+}
+
+.search-container button {
+  height: 40px;
+  width: 40px;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+}
+
+.search-container button img {
+  width: 20px;
+  height: 20px;
+}
+
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  padding: 2rem;
+}
+
+.movie-card {
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.movie-card:hover {
+  transform: scale(1.05);
+}
+
+.movie-image {
+  width: 100%;
+  height: auto;
+}
+
+.movie-info {
+  padding: 2px;
+  text-align: center;
+}
+
+.movie-info-bold {
+  font-weight: normal;
+}
+
+.movie-title {
+  font-size: 15px;
+  margin: 0;
+}
