@@ -10,12 +10,14 @@ const MovieSearch: React.FC<MovieSearchProps> = ({ onSearch }) => {
 
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         setQuery(event.target.value);
-        //Realizar la búsqueda al escribir
+        console.log('Input Changed:', event.target.value);
+        // Realizar la búsqueda al escribir
         onSearch(event.target.value);
     };
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        console.log('Form Submitted:', query);
         // Llama a la función de búsqueda pasando la consulta como argumento
         onSearch(query);
     };

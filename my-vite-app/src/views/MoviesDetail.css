@@ -1,0 +1,111 @@
+h3{
+  font-size: 15px;
+  margin: 2px;
+}
+
+.movie-detail-container {
+    background-color: rgba(255, 255, 255, 0.7); /* Color de fondo del contenedor principal */
+    padding: 20px; /* Espaciado interno */
+    width: fit-content;
+    border-radius: 15px;
+    margin: 20px 120px 50px 120px;
+  }
+  
+  .movie-detail-content {
+    display: flex;
+    align-items: center;
+  }
+  
+  .movie-detail-image {
+    width: 400px; /* Tamaño de la imagen de la película */
+    margin-right: 40px; /* Espaciado a la derecha de la imagen */
+    border-radius: 5px;
+  }
+  
+  .movie-detail-info {
+    flex: 1; /* Ocupa el espacio restante */
+  }
+
+  .movie-details {
+    text-align: left;
+  }
+
+  .movie-detail-info h2 {
+    font-size: 45px; /* Ajusta el tamaño del título según tus preferencias */
+    color: #1F1F35; /* Utiliza el color deseado para el título */
+    margin-top: 0px;
+    margin-bottom: 20px;
+  }
+  
+  .review-section {
+    margin-top: 0px; /* Espaciado superior para la sección de revisión */
+  }
+
+  p {
+    font-size: small;
+    margin: 0;
+  }
+
+  /* Span de Año */
+.release-year-detail {
+  position: relative;
+  top: 0;
+  right: 0;
+  background-color: #FC4978;
+  font-size: 14px;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.back-home-button {
+  display: inline-block;
+  justify-content: space-between;
+  box-sizing: content-box;
+  color: #FFFFFF;
+  border: none;
+  background: url('../assets/arrow-back.svg') no-repeat left center;
+  background-size: 22px; /* Ajusta el tamaño según sea necesario */
+  padding-left: 2.5%;
+  margin-left: 10%;
+  margin-top: 4%;
+  font-size: 20px;
+}
+
+.audience-score-container {
+  display: flex;
+  align-items: center; /* Alinea los elementos verticalmente */
+}
+
+.audience-score-image {
+  width: 40px;
+}
+
+.genre-detail {
+  margin-right: 5px;
+  background-color: #846FF5;
+  font-size: 14px;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.review {
+  font-size: 25px;
+  color: #FC4978;
+}
+
+.audience-score {
+  font-size: 30px; /* Tamaño del texto */
+  font-weight: normal; /* Negrita */
+  margin: 0;
+  margin-left: 15px;
+}
+
+.separator-line {
+  border-top: 1px solid #FC4978; /* Estilo de la línea delgada y color */
+  margin: 10px 0; /* Espaciado vertical */
+  width: 100%; /* Asegura que ocupa todo el ancho disponible */
+}

@@ -6,7 +6,12 @@
   max-width: 1280px;
   margin: 0 auto;
   padding: 0;
-  text-align: center;
+  /* text-align: center; */
+}
+
+body {
+  background: url(./assets/pattern.png);
+  background-color: #171727;
 }
 
 header {
@@ -15,7 +20,8 @@ header {
   height: 100px;
   margin: 0px;
   display: flex;
-  align-items: center; /* Centra verticalmente los elementos hijos */
+  align-items: center;/* Centra verticalmente los elementos hijos */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .logo-image {
@@ -27,7 +33,7 @@ header {
 .movie-search {
   display: flex;
   align-items: center;
-  margin-left: 54%;
+  margin-left: 53%;
 }
 
 .movie-search input {
@@ -35,6 +41,7 @@ header {
   padding: 10px;
   border-radius: 30px;
   border: none;
+  width: 155px;
 }
 
 .search-container {
@@ -56,20 +63,38 @@ header {
   height: 20px;
 }
 
+/* Span de Año */
+.release-year {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #FC4978;
+  font-size: 14px;
+  color: white;
+  padding: 6px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 0px 0px 0px 5px;
+  display: inline-block;
+  z-index: 1; /* Asegura que esté sobre la imagen */
+}
+
 .movies-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 16px;
   padding: 2rem;
+  margin-top: 50px;
 }
 
 .movie-card {
-  background-color: #f0f0f0;
+  background-color: #FFB426;
   border-radius: 8px;
-  padding: 16px;
+  padding: 0px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  position: relative;
 }
 
 .movie-card:hover {
@@ -82,15 +107,105 @@ header {
 }
 
 .movie-info {
-  padding: 2px;
+  padding: 5px;
   text-align: center;
 }
 
-.movie-info-bold {
-  font-weight: normal;
+.movie-info {
+  font-weight: 600;
+  color: #3C3A4C;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .movie-title {
   font-size: 15px;
   margin: 0;
+  padding: 5px;
+}
+
+.pagination {
+  margin: 45px;
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  outline: none;
+}
+
+.pagination>.active>a {
+  background-color: #846FF5;
+  color: #FFFFFF;
+  border-radius: 50%;  /* Hace que el elemento sea un círculo */
+  width: 20px;  /* Ancho fijo */
+  height: 30px;  /* Altura fija */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagination>li>a {
+  border: 1px solid #846FF5;
+  padding: 5px 10px;
+  margin: 0 5px; /* Añade un espacio entre los elementos */
+  outline: none;
+  cursor: pointer;
+  border-radius: 50%; /* Hace que el elemento sea un círculo */
+  width: 20px;  /* Ancho fijo */
+  height: 30px;  /* Altura fija */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagination>li>a,
+.pagination>li>span {
+  color: #5E5E5E;
+  background-color: #FFFFFF;
+}
+
+/* Estilos para el componente de Filtros */
+.filters {
+  height: 80px; /* Ajusta el valor según tus preferencias */
+  display: flex;
+  align-items: center;
+  background-color: #3C3A4C;
+}
+
+.filter-button {
+  background-color: #846FF5; /* Color de fondo para botones */
+  color: white; /* Color del texto */
+  border: none; /* Borde sin estilo */
+  padding: 10px 20px; /* Relleno interno */
+  text-align: center; /* Alineación del texto */
+  text-decoration: none; /* Sin subrayado */
+  display: inline-block; /* Mostrar en línea */
+  font-size: 16px; /* Tamaño del texto */
+  margin: 5px; /* Márgenes */
+  cursor: pointer; /* Cursor de puntero al pasar el ratón */
+  border-radius: 4px; /* Borde redondeado */
+  height: 40px;
+}
+
+.popular-button {
+  margin-left: 25px;
+}
+
+.filter-dropdown {
+  background-color: #846FF5; /* Color de fondo para botones */
+  color: white; /* Color del texto */
+  border: none; /* Borde sin estilo */
+  padding: 10px 20px; /* Relleno interno */
+  text-align: center; /* Alineación del texto */
+  text-decoration: none; /* Sin subrayado */
+  display: inline-block; /* Mostrar en línea */
+  font-size: 16px; /* Tamaño del texto */
+  margin: 5px; /* Márgenes */
+  cursor: pointer; /* Cursor de puntero al pasar el ratón */
+  border-radius: 4px; /* Borde redondeado */
+  height: 40px;
+}
+
+.filter-popularity {
+  margin-left: 25px;
 }
