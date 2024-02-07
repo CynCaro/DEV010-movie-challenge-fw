@@ -71,8 +71,10 @@ header {
   background-color: #FC4978;
   font-size: 14px;
   color: white;
-  padding: 5px;
-  border-radius: 5px;
+  padding: 6px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 0px 0px 0px 5px;
   display: inline-block;
   z-index: 1; /* Asegura que esté sobre la imagen */
 }

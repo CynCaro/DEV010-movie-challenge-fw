@@ -2,6 +2,7 @@ import { ReactNode, Dispatch, SetStateAction } from "react";
 
 //Interfaz para Movie, describe las propiedades de una película individual
 export interface Movie {
+  total_results(total_results: unknown): unknown;
   length: number;
   results: Movie;
   genres: Genre[];
@@ -17,6 +18,7 @@ export interface Movie {
 
 // Nueva interfaz para la respuesta, describe la estructura de la respuesta de la API, incluye el total de resultados y la matriz de películas
 export interface MovieListResponse {
+  length: number;
   release_date: string | number | Date;
   genres(genres: unknown): unknown;
   total_results: number;
@@ -39,11 +41,12 @@ export interface StateContextType {
 // Define una interfaz para los parámetros de tmdbService
 export interface TmdbServiceParams {
   searchKey?: string;
-  sortOrder?: 'asc' | 'desc' | string; // Una cadena que indica el orden de clasificación ('asc' para ascendente, 'desc' para descendente)
+  sortOrder?: string;
   movieId?: string; // Nuevo parámetro
   additionalParams?: {
     setGenres?: React.Dispatch<React.SetStateAction<Genre[]>>;
     page?: number;
+    sort_by?: string;
     with_genres?: string | number;
     language?: string;
   };

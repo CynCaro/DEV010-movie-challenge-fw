@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useRef, useState } from 'react';
 import { Genre, Movie } from '../services/types';
 import tmdbService from '../services/tmdbService';
@@ -9,7 +10,7 @@ const MovieDetail: React.FC = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [movie, setMovie] = useState<Movie | null>(null);
-  const [localGenres, setLocalGenres] = useState<Genre[]>([]);
+  const [, setLocalGenres] = useState<Genre[]>([]);
   const releaseYearRef = useRef<number | null>(null);
 
   useEffect(() => {
@@ -21,8 +22,8 @@ const MovieDetail: React.FC = () => {
         });
         console.log('API Response:', response);
         // Verifica si la respuesta tiene la propiedad "movies" y si hay al menos una película
-        if (response) {
-          const selectedMovie = response.movies; // Obtén la primera película de la lista
+        if (response && response.movie) {
+          const selectedMovie = response.movie; // Selecciona la primera película de la lista
           setMovie(selectedMovie);
           setLocalGenres(response.genres as Genre[]);
 
@@ -34,8 +35,7 @@ const MovieDetail: React.FC = () => {
         }
       } catch (error) {
         console.error('Error al obtener detalles de la película:', error);
-        // Redirigir a la página principal u otra página de error si hay un problema
-        navigate('/');
+        navigate('/'); // Redirigir a la página principal u otra página de error si hay un problema
       }
     };
 

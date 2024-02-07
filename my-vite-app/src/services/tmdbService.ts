@@ -1,22 +1,24 @@
 // Servicio para gestionar las solicitudes a la API de TMDB
 import axios from 'axios';
-import { Genre, Movie, MovieListResponse } from '../services/types';
+import { Genre, Movie } from '../services/types';
 import { TmdbServiceParams } from '../services/types';
 
 const API_URL = 'https://api.themoviedb.org/3/';
-const API_KEY = '4e88ef98afd8eeb07600b3e91464bebd';
+const API_KEY = 'a48d09c9ee16ed9b9238019351d7660c';
 
 // Función para obtener películas y géneros
 const tmdbService = async ({ searchKey, sortOrder, movieId, additionalParams }: TmdbServiceParams): Promise<{
-  movie: Movie;
-  movies: MovieListResponse;
+  movies?: Movie[]; // En Home.tsx esperamos una lista de películas
+  movie?: Movie; // En MovieDetail.tsx esperamos una sola película
   genres: Genre[];
+  error?: string; // Campo para el mensaje de error
 }> => {
   try {
-    // Llamada para obtener películas
-    const type = searchKey ? 'search' : 'discover';
-    let URL = `${API_URL}/${type}/movie/`
-    if (movieId) URL = `${API_URL}/movie/${movieId}` //"" , 0, undefined, null - falsy
+    let URL = `${API_URL}discover/movie`; // URL para descubrir películas
+    if (movieId) URL = `${API_URL}/movie/${movieId}`; //"" , 0, undefined, null - falsy
+
+    // console.log('URL de la solicitud:', URL);
+
     const moviesResponse = await axios.get(URL, {
       params: {
         api_key: API_KEY,
@@ -25,27 +27,33 @@ const tmdbService = async ({ searchKey, sortOrder, movieId, additionalParams }: 
         ...(additionalParams || {}),
       },
     });
-console.log (moviesResponse)
+
+    console.log('Respuesta de la API de películas:', moviesResponse.data);
+
     // Llamada para obtener géneros
-    const genresResponse = await axios.get(`${API_URL}/genre/movie/list`, {
+    const genresResponse = await axios.get(`${API_URL}genre/movie/list`, {
       params: {
         api_key: API_KEY,
         language: 'en-US',
       },
     });
 
-    // Actualiza el estado global de géneros
-    if (additionalParams?.setGenres) {
-      additionalParams.setGenres(genresResponse.data.genres);
-    }
+    // Imprimir la respuesta de la API de géneros
+    console.log('Respuesta de la API de géneros:', genresResponse.data);
 
-    // Devuelve un objeto con las respuestas de ambas llamadas
-    return {
-      movies: moviesResponse.data,
-      genres: genresResponse.data.genres as Genre[],
+    // Verificar si 'total_pages' está presente en la respuesta
+    const total_pages = moviesResponse.data.total_pages;
+
+    // Crear un objeto result y asignar las películas y géneros
+    const result = {
+      movies: moviesResponse.data.results,
+      genres: genresResponse.data.genres,
+      total_pages: total_pages // Agregar total_pages al objeto result
     };
+
+    return result;
   } catch (error) {
-    console.error('Error al obtener datos:', error);
+    console.error('Error al obtener películas y géneros:', error);
     throw error;
   }
 };
